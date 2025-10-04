@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eksperci od wodociągów i instalacji — projekt, wykonawstwo, automatyzacja</title>
+    <meta name="description" content="Kompleksowe rozwiązania dla sieci wodociągowych i instalacji: audyt, projekt, wykonawstwo, automatyzacja i finansowanie. Kontakt i case studies.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004d99;
+            --secondary: #00b894;
+            --dark: #1a1a2e;
+            --dark-light: #16213e;
+            --gray: #4a5568;
+            --light-gray: #e2e8f0;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            color: var(--white);
+            padding: 120px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 50h100M50 0v100" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-lead {
+            font-size: clamp(16px, 2vw, 20px);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 800px;
+            opacity: 0.95;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 20px;
+        }
+
+        section:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .section-intro {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 48px;
+            max-width: 800px;
+        }
+
+        /* Team Cards */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .team-card h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .team-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .team-card p {
+            color: var(--gray);
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .team-specialty {
+            background: rgba(0, 102, 204, 0.05);
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 16px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .team-specialty strong {
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 16px rgba(0, 102, 204, 0.1);
+        }
+
+        .service-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 8px;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .service-result {
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(0, 184, 148, 0.05);
+            border-radius: 6px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .service-result strong {
+            color: var(--secondary);
+            font-size: 14px;
+        }
+
+        /* Case Studies */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .case-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .case-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 24px;
+        }
+
+        .case-header h3 {
+            font-size: 22px;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .case-body {
+            padding: 24px;
+        }
+
+        .case-body p {
+            color: var(--gray);
+            margin-bottom: 16px;
+        }
+
+        .case-result {
+            background: rgba(0, 184, 148, 0.1);
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+        }
+
+        .case-result strong {
+            color: var(--secondary);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            max-width: 800px;
+            margin: 48px auto 0;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 48px;
+            bottom: -32px;
+            width: 2px;
+            background: var(--light-gray);
+        }
+
+        .process-step:last-child::before {
+            display: none;
+        }
+
+        .process-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .process-content h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .process-content p {
+            color: var(--gray);
+            font-size: 15px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 48px auto 0;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-alternatives {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 2px solid var(--light-gray);
+            text-align: center;
+        }
+
+        .contact-alternatives p {
+            color: var(--gray);
+            margin-bottom: 16px;
+        }
+
+        .contact-alternatives a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 800px;
+            margin: 48px auto 0;
+        }
+
+        .faq-item {
+            margin-bottom: 24px;
+            background: var(--white);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--light-gray);
+        }
+
+        .faq-item h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .faq-item p {
+            color: var(--gray);
+            font-size: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 20px 60px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .team-grid,
+            .services-grid,
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(0, 102, 204, 0.1) 0%, rgba(0, 184, 148, 0.1) 100%);
+            padding: 32px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            margin: 32px 0;
+        }
+
+        .offer-checklist {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        .offer-checklist li {
+            padding: 12px 0;
+            padding-left: 32px;
+            position: relative;
+            color: var(--gray);
+        }
+
+        .offer-checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>Infrastruktura wodna i instalacyjna nowej generacji — projektujemy, cyfryzujemy i realizujemy</h1>
+            <p class="hero-lead">
+                Łączymy ponad 60 lat praktycznego doświadczenia w zarządzaniu sieciami wodociągowymi, projektowaniu instalacji oraz finansowym prowadzeniu dużych inwestycji. Realizujemy kompleksowe rozwiązania — od ekspertyzy i projektu, przez wdrożenie i automatyzację, po finansowanie i nadzór. Dajemy samorządom i firmom pewność, że inwestycja będzie technicznie poprawna, opłacalna i przyszłościowa.
+            </p>
+            <div class="cta-group">
+                <a href="#kontakt" class="btn btn-primary">Skontaktuj się teraz</a>
+                <a href="#oferta" class="btn btn-secondary">Pobierz broszurę PDF</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- O NAS -->
+    <section id="o-nas">
+        <div class="container">
+            <h2>O nas</h2>
+            <p class="section-intro">
+                Jesteśmy zespołem praktyków łączących kompetencje inżynieryjne, wykonawcze i finansowe, który umie wdrożyć projekt od A do Z — z myślą o efektywności operacyjnej, długowieczności infrastruktury i optymalizacji kosztów eksploatacyjnych.
+            </p>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-role">Biegły sądowy i ekspert ds. wodociągów</div>
+                    <h3>Prof. / Inż. [Imię Nazwisko]</h3>
+                    <p>40 lat w operacjach, planowaniu i nadzorze nad miejskimi sieciami wodociągowymi. Prowadził modernizacje, audyty techniczne i ekspertyzy sądowe.</p>
+                    <p>Autor opinii technicznych wykorzystywanych w postępowaniach administracyjnych i sądowych.</p>
+                    <div class="team-specialty">
+                        <strong>Specjalność:</strong>
+                        <p style="margin-top: 8px;">Audyt sieci, diagnostyka awarii, projektowanie remediacyjne, ocena stanu technicznego zasobów wodnych.</p>
+                    </div>
+                    <p style="margin-top: 16px; font-size: 14px; font-style: italic;">
+                        Jego ekspertyza minimalizuje ryzyko projektowe i procesowe, daje mocne podstawy do decyzji inwestycyjnych i podstawę do obrony projektu w przetargach i sporach prawnych.
+                    </p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-role">Projektant i wykonawca instalacji</div>
+                    <h3>Inż. [Imię Nazwisko]</h3>
+                    <p>Realizacje od budynków użyteczności publicznej po duże obiekty przemysłowe i kompleksy mieszkaniowe.</p>
+                    <p>Kompetencje CAD/BIM, koordynacja branż, nadzór wykonawczy, optymalizacja instalacji (energooszczędność, OZE).</p>
+                    <div class="team-specialty">
+                        <strong>Specjalność:</strong>
+                        <p style="margin-top: 8px;">Kompleksowe projekty instalacyjne, integracja systemów grzewczych, modernizacje i optymalizacja kosztowa.</p>
+                    </div>
+                    <p style="margin-top: 16px; font-size: 14px; font-style: italic;">
+                        Gwarantuje wykonalność projektów, kontrolę kosztów budowy i terminów oraz płynne przejście z fazy projektowej do wykonawczej.
+                    </p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-role">Corporate Finance & Controlling</div>
+                    <h3>[Twoje Imię Nazwisko]</h3>
+                    <p>Kierowanie projektami inwestycyjnymi (m.in. biogazownie), budowa modeli finansowych, due diligence, negocjacje z inwestorami.</p>
+                    <p>Sieć kontaktów: VC / PE / IB / Family Offices (~5000 kontaktów w ekosystemie inwestycyjnym).</p>
+                    <div class="team-specialty">
+                        <strong>Specjalność:</strong>
+                        <p style="margin-top: 8px;">Finansowanie projektów infrastrukturalnych, przygotowanie ofert do przetargów, programów dotacyjnych i instrumentów dłużnych.</p>
+                    </div>
+                    <p style="margin-top: 16px; font-size: 14px; font-style: italic;">
+                        Zapewnia finansową wykonalność, optymalizację CAPEX/OPEX i dostęp do potencjalnych źródeł finansowania.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USŁUGI -->
+    <section id="uslugi">
+        <div class="container">
+            <h2>Nasze usługi</h2>
+            <p class="section-intro">
+                Nasze usługi łączą inżynierię, wykonawstwo i cyfryzację — dzięki temu inwestycja działa sprawniej i taniej przez całe życie eksploatacji.
+            </p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-number">1</div>
+                    <h3>Audyt i ekspertyzy techniczne</h3>
+                    <p><strong>Co robimy:</strong> Szczegółowe przeglądy stanu technicznego, ocena ryzyka, mapowanie źródeł awarii, raporty techniczne i opinie biegłego.</p>
+                    <div class="service-result">
+                        <strong>Efekt dla klienta:</strong>
+                        <p style="margin-top: 8px;">Jasna diagnoza problemów, plan naprawczy z priorytetami, przewidywalność kosztów i wsparcie w postępowaniu przetargowym.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">2</div>
+                    <h3>Projektowanie instalacji</h3>
+                    <p><strong>Co robimy:</strong> Koncepcje, projekty wykonawcze, dokumentacja przetargowa, koordynacja branż (BIM/CAD).</p>
+                    <div class="service-result">
+                        <strong>Efekt:</strong>
+                        <p style="margin-top: 8px;">Projekty zoptymalizowane kosztowo i energetycznie, gotowe do natychmiastowej realizacji, z uwzględnieniem warunków lokalnych i przyszłych potrzeb.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">3</div>
+                    <h3>Wykonawstwo i nadzór</h3>
+                    <p><strong>Co robimy:</strong> Generalne wykonawstwo lub prace w systemie podwykonawczym, nadzór inwestorski, testy i odbiory.</p>
+                    <div class="service-result">
+                        <strong>Efekt:</strong>
+                        <p style="margin-top: 8px;">Terminowa realizacja, zgodność z dokumentacją i normami, minimalizacja zmian projektowych w trakcie budowy.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">4</div>
+                    <h3>Infrastruktura 4.0 — automatyzacja i monitoring</h3>
+                    <p><strong>Co robimy:</strong> Projektujemy i wdrażamy systemy automatyki i monitoringu (SCADA, IoT), aplikacje operatorskie, dashboardy KPI i narzędzia do predykcyjnej konserwacji.</p>
+                    <p style="margin-top: 12px;">Integracja czujników (ciśnienie, przepływ, jakość wody), budowa dashboardów realtime, automatyczne alerty i przepływy robocze, systemy raportowania do urzędów i regulatorów.</p>
+                    <div class="service-result">
+                        <strong>Efekt:</strong>
+                        <p style="margin-top: 8px;">Niższe koszty OPEX, szybsze wykrywanie awarii, dłuższa żywotność urządzeń i zgodność z wymaganiami raportowymi (ESG).</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">5</div>
+                    <h3>Finansowanie i modele biznesowe</h3>
+                    <p><strong>Co robimy:</strong> Modele finansowe (CAPEX/OPEX), analiza opłacalności, przygotowanie dokumentów przetargowych, doradztwo w pozyskiwaniu dotacji i kredytów, matchmaking z inwestorami.</p>
+                    <div class="service-result">
+                        <strong>Efekt:</strong>
+                        <p style="margin-top: 8px;">Klarowna ścieżka finansowania projektu, przygotowanie do due diligence, większe szanse na akceptację przez samorządy i instytucje finansujące.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section id="case-studies">
+        <div class="container">
+            <h2>Realizacje</h2>
+            <p class="section-intro">
+                Konkretne projekty, realne rezultaty — przykłady naszych wdrożeń dla samorządów i przedsiębiorstw.
+            </p>
+
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Modernizacja sieci wodociągowej</h3>
+                        <p style="opacity: 0.9;">Miasto X</p>
+                    </div>
+                    <div class="case-body">
+                        <p><strong>Wyzwanie:</strong> Kompleksowy audyt → projekt wymiany odcinków sieci → harmonogram prac z minimalizacją przerw w dostawach → wdrożenie systemu monitoringu ciśnienia.</p>
+                        <div class="case-result">
+                            <strong>Rezultat:</strong>
+                            <p>Redukcja strat wody o X% w ciągu 12 miesięcy, skrócenie czasu reakcji na awarie z 8h do 1h.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Instalacje przemysłowe</h3>
+                        <p style="opacity: 0.9;">Zakład Y</p>
+                    </div>
+                    <div class="case-body">
+                        <p><strong>Wyzwanie:</strong> Projekt i wykonawstwo instalacji sanitarnych dla nowej hali produkcyjnej z integracją systemów odzysku ciepła.</p>
+                        <div class="case-result">
+                            <strong>Rezultat:</strong>
+                            <p>Obniżenie kosztów ogrzewania o Y% i poprawa warunków BHP.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Biogazownia — projekt inwestycyjny</h3>
+                        <p style="opacity: 0.9;">Kompleksowe zarządzanie</p>
+                    </div>
+                    <div class="case-body">
+                        <p><strong>Wyzwanie:</strong> Kompleksowe prowadzenie projektu: model finansowy, harmonogram budowy, pozyskanie partnerów oraz nadzór.</p>
+                        <div class="case-result">
+                            <strong>Rezultat:</strong>
+                            <p>Projekt zrealizowany w ramach założonego budżetu i harmonogramu; dodatkowe przychody z odsprzedaży energii.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JAK PRACUJEMY -->
+    <section id="proces">
+        <div class="container">
+            <h2>Jak pracujemy</h2>
+            <p class="section-intro">
+                Transparentny proces współpracy — od pierwszego kontaktu do pełnego wdrożenia i wsparcia operacyjnego.
+            </p>
+
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <div class="process-content">
+                        <h3>Kontakt i wstępna analiza</h3>
+                        <p>Bezpłatna rozmowa, zebranie potrzeb, wstępny zakres.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <div class="process-content">
+                        <h3>Audyt i koncepcja</h3>
+                        <p>Miejscowy audyt, raport i propozycja wariantów rozwiązania.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <div class="process-content">
+                        <h3>Projekt i finansowanie</h3>
+                        <p>Dokumentacja projektowa + model finansowy + opcje finansowania.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <div class="process-content">
+                        <h3>Realizacja</h3>
+                        <p>Wykonawstwo, automatyzacja, testy i odbiory.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-number">5</div>
+                    <div class="process-content">
+                        <h3>Operacje i optymalizacja</h3>
+                        <p>Wdrożenie systemów monitoringu, szkolenia, wsparcie posprzedażowe. Opcjonalnie: umowy serwisowe (24/7 monitoring i wsparcie, kontrakty na konserwację).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFERTA DLA SAMORZĄDÓW -->
+    <section id="oferta">
+        <div class="container">
+            <h2>Oferta dla samorządów i instytucji</h2>
+            <p class="section-intro">
+                Kompleksowa obsługa inwestycji wodno-kanalizacyjnych i instalacyjnych — modernizacje sieci, programy przeciwdziałania stratom, rewitalizacja, integracja OZE i automatyzacja.
+            </p>
+
+            <div class="highlight">
+                <h3 style="font-size: 24px; margin-bottom: 16px;">Co zawiera nasza oferta:</h3>
+                <ul class="offer-checklist">
+                    <li>Pełny audyt techniczny i prawny</li>
+                    <li>Projekt koncepcyjny i wykonawczy (BIM/CAD)</li>
+                    <li>Model finansowy i plan finansowania (dotacje, kredyty, PPP)</li>
+                    <li>Wykonawstwo z nadzorem i odbiorem</li>
+                    <li>Wdrożenie systemów telemetrycznych i automatyki</li>
+                    <li>Szkolenia dla personelu i dokumentacja eksploatacyjna</li>
+                </ul>
+                
+                <p style="margin-top: 24px; font-weight: 600; color: var(--primary);">
+                    Korzyści dla gminy: lepsza jakość usług dla mieszkańców, długoterminowe oszczędności, zgodność z przepisami i możliwość pozyskania funduszy unijnych.
+                </p>
+            </div>
+
+            <div style="margin-top: 48px; text-align: center;">
+                <a href="#kontakt" class="btn btn-primary">Pobierz pełną broszurę PDF</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="container">
+            <h2>Najczęściej zadawane pytania</h2>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Czy pracujecie na terenie całej Polski?</h3>
+                    <p>Tak — operacyjnie koncentrujemy się na regionie X, ale realizujemy projekty krajowe.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Czy pomagacie pozyskać dotacje?</h3>
+                    <p>Tak — przygotowujemy dokumenty aplikacyjne, wnioski i doradzamy przy wyborze instrumentów finansowych.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Czy wykonujecie tylko projekty publiczne?</h3>
+                    <p>Nie — obsługujemy też inwestorów prywatnych, przemysł i deweloperów.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Jak długo trwa audyt + koncepcja?</h3>
+                    <p>Typowy audyt lokalny i wstępna koncepcja: 2–4 tygodnie (zależy od wielkości i zakresu).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt" style="background: var(--white);">
+        <div class="container">
+            <h2 style="text-align: center;">Porozmawiajmy o Twoim projekcie</h2>
+            <p class="section-intro" style="text-align: center; margin: 0 auto 48px;">
+                Opisz problem, a my przygotujemy wstępną strategię działania i zakres bez zobowiązań.
+            </p>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Imię i nazwisko *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="organization">Organizacja</label>
+                        <input type="text" id="organization" name="organization">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Krótki opis projektu (max 500 znaków) *</label>
+                        <textarea id="message" name="message" maxlength="500" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Wyślij zapytanie</button>
+                </form>
+
+                <div class="contact-alternatives">
+                    <p><strong>Alternatywne sposoby kontaktu:</strong></p>
+                    <a href="mailto:kontakt@twojafirma.pl">kontakt@twojafirma.pl</a>
+                    <a href="tel:+48600000000">+48 600 000 000</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Infrastruktura Wodna. Wszelkie prawa zastrzeżone.</p>
+            <p style="margin-top: 12px; font-size: 14px;">
+                <a href="#" style="color: var(--white); opacity: 0.8; text-decoration: none; margin: 0 12px;">Polityka prywatności</a>
+                <a href="#" style="color: var(--white); opacity: 0.8; text-decoration: none; margin: 0 12px;">Regulamin</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll dla anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Obsługa formularza kontaktowego
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Zbierz dane z formularza
+            const formData = {
+                name: document.getElementById('name').value,
+                organization: document.getElementById('organization').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                message: document.getElementById('message').value
+            };
+
+            // Tutaj dodasz integrację z backend/email service
+            // Na razie pokazujemy komunikat
+            alert('Dziękujemy za kontakt! Odpowiemy najszybciej jak to możliwe.\n\nDane zostały zapisane:\n' + 
+                  'Imię: ' + formData.name + '\n' +
+                  'Email: ' + formData.email);
+            
+            // Resetuj formularz
+            this.reset();
+        });
+    </script>
